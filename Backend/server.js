@@ -11,5 +11,24 @@ DBconnect()
 
 
 app.listen(process.env.PORT,(req,res)=>{
-    console.log(`SERVER RUNNING PORT AT : ${process.env.PORT}`);
+    console.log(`SERVER RUNNING PORT AT : ${process.env.PORT} ENVIRONMENT ${process.env.NODE_ENV}`);
+})
+
+
+process.on("unhandledRejection",(err)=>{
+        console.log(`Error ${err.messsage}`);
+        console.log(`shutting Down Server Due To Uhandled`);
+    server.close(()=>{
+        process.exit(1)
+    })
+    
+    })
+
+   process.on("uncaughtException",(err)=>{
+    console.log(`Error ${err.messsage}`);
+    console.log(`shutting Down Server Due To Uncaught Exception`);
+server.close(()=>{
+    process.exit(1)
+})
+
 })

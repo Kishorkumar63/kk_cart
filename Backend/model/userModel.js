@@ -1,6 +1,6 @@
 const mongoose=require("mongoose");
 const validator=require("validator");
-const bcrypt=require("bcrypt")
+//const bcrypt=require("bcrypt")
 const jwt=require("jsonwebtoken")
 const crypto=require("crypto")
 
@@ -25,6 +25,10 @@ const userSchema=new mongoose.Schema({
     avatar:{
         type:String,
         default:"user"
+    },
+    role:{
+type:String,
+default:"user"
     },
     resetPasswordToken:String,
     resetPasswordTokenExpire:Date,

@@ -1,16 +1,19 @@
 const Product=require("../model/productModel")
-
-
+const errrorHandler=require("../utils/errorHandler")
+const catchAsyncError=require("../middleware/catchAsyncError") 
+const apiFeatures=require("../utils/apiFestures")
 
 //GEPT PRODUCT   /api/v1/
-exports.getProducts=async(req,res)=>{
+exports.getProducts= catchAsyncError(async(req,res)=>{
+    const resPerPage=1;
+   const APIFeatures= new apiFeatures(Product.find(),req.query).search().filter().paginate(resPerPage)
     const products=await Product.find()
     res.json({
         sucess:"success",
         count:products.length,
         products
     })
-}
+})
 exports.newProduct=async(req,res)=>{
 const prdouct=await Product.create(req.body)
 res.status(201).json({
@@ -27,10 +30,8 @@ const product= await  Product.findById(req.params.id);
 
  if(!product)
  {
-   return  res.status(404).json({
-        success:false,
-        message:"product Not Found"
-    })
+   
+   return next(new errrorHandler("product not Found ",400))
  }
 res.status(201).json({
     success:true,
