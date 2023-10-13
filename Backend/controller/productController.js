@@ -15,6 +15,7 @@ exports.getProducts= catchAsyncError(async(req,res)=>{
     })
 })
 exports.newProduct=async(req,res)=>{
+    req.body.user=req.user.id
 const prdouct=await Product.create(req.body)
 res.status(201).json({
     Sucess:["Product Save",true],

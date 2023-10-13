@@ -18,3 +18,14 @@ next()
 
 
 })
+
+exports.authorizeRoles=(...roles)=>
+{
+   return (req,res,next)=>{
+      if(!roles.includes(req.user.role)=="admin")
+      {
+         return next(new ErrorHandler(`Role ${req.user.role} Not Allowed`,401))
+      }
+      next()
+   }
+}
