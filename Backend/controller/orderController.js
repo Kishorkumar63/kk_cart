@@ -1,8 +1,8 @@
 // CREATING New Order - api/v1/order/new
 
-const catchAsyncError = require("../middlewares/catchAsync");
-const Order=require("../models/orderModel");
-const Product=require("../models/productModel")
+const catchAsyncError = require("../middleware/catchAsyncError");
+const Order=require("../model/orderModel");
+const Product=require("../model/productModel")
 const ErrorHandler = require("../utils/errorHandler");
 exports.newOrder=catchAsyncError(async(req,res,next)=>{
 const {orderItems,itemsPrice,taxPrice ,shippingPrice,totalPrice,orderStatus,createdAt,paymentInfo,}=req.body;
