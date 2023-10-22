@@ -11,7 +11,7 @@ export const getProducts = async (dispatch) => {
 
   } catch (error) {
     // Handle Error
-    dispatch(productsFail(error.response.data.message))
+    dispatch(productsFail(error.data.message))
   }
 
 
