@@ -1,14 +1,14 @@
 import React, { Fragment, useEffect } from "react";
 import MetaData from "./layouts/MetaData";
-import { getProducts } from "../actions/productsAction";
+import { getProducts } from "../actions/productsAction"
 import {useDispatch} from "react-redux"
 
 const Home = () => {
-  const dispatch=useDispatch()
-  useEffect(()=>{
+  const dispatch=useDispatch();
+  
+useEffect(()=>{
 dispatch(getProducts)
-  },[])
-
+},[])
 
 
 
