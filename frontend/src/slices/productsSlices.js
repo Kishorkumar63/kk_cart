@@ -16,13 +16,13 @@ const productsSlice = createSlice({
         productsSuccess(state, action) {
             return {
                 loading: false,
-                products: action.payload.products
+                products: action.payload.products,
             }
         },
         productsFail(state, action) {
             return {
                 loading: false,
-                error: action.payload
+                error: action.payload,
             }
         },
 
