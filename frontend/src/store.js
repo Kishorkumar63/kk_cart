@@ -8,7 +8,8 @@ const reducer = combineReducers({
 
 const store = configureStore({
   reducer,
-  middleware: [thunk],
+middleware:[thunk],
+
 });
 
 export default store;

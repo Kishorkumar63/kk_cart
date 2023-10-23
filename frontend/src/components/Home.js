@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import MetaData from "./layouts/MetaData";
-import { getProducts } from "../actions/productsAction";
+import  getProducts  from "../actions/productsAction";
 import {useDispatch} from "react-redux"
 
 const Home = () => {
@@ -31,7 +31,7 @@ dispatch(getProducts)
               />
               <div className="card-body d-flex flex-column">
                 <h5 className="card-title">
-                  <a href="">
+                  <a href="m">
                     OPPO F21s Pro 5G (Dawnlight Gold, 8GB RAM, 128 Storage) with
                     No Cost EMI/Additional Exchange Offers
                   </a>
@@ -43,7 +43,7 @@ dispatch(getProducts)
                   <span id="no_of_reviews">(5 Reviews)</span>
                 </div>
                 <p className="card-text">$245.67</p>
-                <a href="#" id="view_btn" className="btn btn-block">
+                <a href="k" id="view_btn" className="btn btn-block">
                   View Details
                 </a>
               </div>
@@ -58,7 +58,7 @@ dispatch(getProducts)
               />
               <div className="card-body d-flex flex-column">
                 <h5 className="card-title">
-                  <a href="">
+                  <a href="k">
                     WRISTIO HD, Bluetooth Calling Smart Watch, 15 days battery
                     life, Water Resistant
                   </a>
@@ -72,7 +72,7 @@ dispatch(getProducts)
                   <span id="no_of_reviews">(5 Reviews)</span>
                 </div>
                 <p className="card-text">$150.32</p>
-                <a href="#" id="view_btn" className="btn btn-block">
+                <a href="k" id="view_btn" className="btn btn-block">
                   View Details
                 </a>
               </div>
@@ -87,7 +87,7 @@ dispatch(getProducts)
               />
               <div className="card-body d-flex flex-column">
                 <h5 className="card-title">
-                  <a href="">
+                  <a href="k">
                     Dell Inspiron 3511 Laptop, Intel i3-1115G4, 8GB, 512GB
                   </a>
                 </h5>
@@ -100,7 +100,7 @@ dispatch(getProducts)
                   <span id="no_of_reviews">(5 Reviews)</span>
                 </div>
                 <p className="card-text">$440.57</p>
-                <a href="#" id="view_btn" className="btn btn-block">
+                <a href="k" id="view_btn" className="btn btn-block">
                   View Details
                 </a>
               </div>
@@ -115,7 +115,7 @@ dispatch(getProducts)
               />
               <div className="card-body d-flex flex-column">
                 <h5 className="card-title">
-                  <a href="">
+                  <a href="k">
                     PTron Newly Launched Tangent Sports, 60Hrs Playtime
                   </a>
                 </h5>
@@ -131,7 +131,7 @@ dispatch(getProducts)
 
                 <a
                   type="button"
-                  href="#"
+                  href="k"
                   id="view_btn"
                   className="btn btn-block"
                 >
@@ -149,7 +149,7 @@ dispatch(getProducts)
               />
               <div className="card-body d-flex flex-column">
                 <h5 className="card-title">
-                  <a href="">Campus Men's Maxico Running Shoes</a>
+                  <a href="k">Campus Men's Maxico Running Shoes</a>
                 </h5>
                 <div className="ratings mt-auto">
                   <i className="fa fa-star"></i>
@@ -160,7 +160,7 @@ dispatch(getProducts)
                   <span id="no_of_reviews">(5 Reviews)</span>
                 </div>
                 <p className="card-text">$10.12</p>
-                <a href="#" id="view_btn" className="btn btn-block">
+                <a href="k" id="view_btn" className="btn btn-block">
                   View Details
                 </a>
               </div>
