@@ -19,20 +19,20 @@ app.listen(process.env.PORT,(req,res)=>{
 // MOngo DB Connection ERROE
 
 
-process.on("unhandledRejection",(err)=>{
-        console.log(`Error ${err.messsage}`);
-        console.log(`shutting Down Server Due To Uhandled`);
-    server.close(()=>{
-        process.exit(1)
-    })
+// process.on("unhandledRejection",(err)=>{
+//         console.log(`Error ${err.messsage}`);
+//         console.log(`shutting Down Server Due To Uhandled`);
+//     server.close(()=>{
+//         process.exit(1)
+//     })
     
-    })
+//     })
 
-   process.on("uncaughtException",(err)=>{
-    console.log(`Error ${err.messsage}`);
-    console.log(`shutting Down Server Due To Uncaught Exception`);
-server.close(()=>{
-    process.exit(1)
-})
+//    process.on("uncaughtException",(err)=>{
+//     console.log(`Error ${err.messsage}`);
+//     console.log(`shutting Down Server Due To Uncaught Exception`);
+// server.close(()=>{
+//     process.exit(1)
+// })
 
-})
+// })
