@@ -37,9 +37,11 @@ exports.getSinglePrdouct = async (req , res, next) => {
   if (!product) {
     return next(new errrorHandler("product not Found ", 400));
   }
+  await new Promise(resolve=>setTimeout(resolve,3000))
   res.status(201).json({
+
     success: true,
-    product,
+     product,
   });
 };
 
