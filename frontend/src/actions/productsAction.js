@@ -4,10 +4,15 @@ import {
   productsRequest,
   productsSuccess,
 } from "../slices/productsSlices";
-export const getProducts = async (dispatch) => {
+export const getProducts =(keyword, currentPage) =>async (dispatch) => {
   try {
     dispatch(productsRequest());
-    const { data } = await axios.get("/api/v1/products");
+    let link=`/api/v1/products?page=${currentPage}`
+    if(keyword)
+    {
+      link+=`&keyword=${keyword}`
+    }
+    const { data } = await axios.get(link);
 
     dispatch(productsSuccess(data));
   } catch (error) {

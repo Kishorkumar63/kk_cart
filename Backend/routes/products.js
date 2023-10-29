@@ -13,10 +13,8 @@ const {
 const router = express.Router();
 
 router.route("/products").get(getProducts);
-router
-  .route("/product/new")
-  .post(isAuthenticatedUser, authorizeRoles("admin"), newProduct);
-router.route("/product/:id").get(getSinglePrdouct);
+router.route("/product/new").post(isAuthenticatedUser, authorizeRoles("admin"), newProduct);
+router.route("/product/:id").get(getSinglePrdouct)
 router.route("/product/:id").put(isAuthenticatedUser, updateProduct);
 router.route("/product/:id").delete(isAuthenticatedUser, deletePrdouct);
 

@@ -5,7 +5,7 @@ const productsSlice = createSlice({
     name: "products",
     initialState: {
         loading: false,
-        product:{}
+       
     },
     reducers: {
         productsRequest(state, action) {
@@ -18,6 +18,8 @@ const productsSlice = createSlice({
             return {
                 loading: false,
                 products: action.payload.products,
+                productsCount:action.payload.count,
+                resPerPage:action.payload.resPerPage
             }
         },
         productsFail(state, action) {
