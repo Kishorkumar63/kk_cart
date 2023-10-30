@@ -23,7 +23,7 @@ name:{
     {
         const queryStrCopy={...this.queryStr}
  // before 
- console.log(queryStrCopy);
+ //console.log(queryStrCopy);
 
  // remove Field From Query
         const removeFields=["keyword","limit","page"];
@@ -32,7 +32,7 @@ name:{
         queryStr = queryStr.replace(/\b(gt|gte|lt|lte)/g, (match) => `${match}`);
         this.query.find(JSON.parse(queryStr));
         // after
-        console.log(queryStrCopy);
+       // console.log(queryStrCopy);
         return this;
 
     }
