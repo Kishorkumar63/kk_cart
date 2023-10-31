@@ -123,7 +123,7 @@ exports.resetPassword = catchAsyncError(async (req, res, next) => {
 //user profile take service
 
 exports.getUserProfile = catchAsyncError(async (req, res, next) => {
-  await User.findById(req.user.id);
+  const user = await User.findById(req.user.id);
   res.status(200).json({
     success: true,
     user,

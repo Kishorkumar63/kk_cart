@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../actions/productsAction";
+import { getProducts } from "../../actions/productActions";
 import Loader from ".././layouts/Loader";
 import Product from "./Product";
 import MetaData from ".././layouts/MetaData";
@@ -115,23 +115,26 @@ const ProductSearch = () => {
                 </div>
 
                 <hr className="my-5" />
-                 {/* {Ratinng } */}
-                 <div className="mt-5">
+                {/* {Ratinng } */}
+                <div className="mt-5">
                   <h4 className="mb-3">Ratings</h4>
                   <ul className="pl-0">
-                    {[5,4,3,2,1].map((star) => (
+                    {[5, 4, 3, 2, 1].map((star) => (
                       <li
                         onClick={() => setRating(star)}
                         style={{ cursor: "pointer", listStyleType: "none" }}
                         key={category}
                       >
-                       <div className="rating-outer">
-                        <div className="rating-inner" style={{width:`${star*20}%`}}></div>
-                       </div>
+                        <div className="rating-outer">
+                          <div
+                            className="rating-inner"
+                            style={{ width: `${star * 20}%` }}
+                          ></div>
+                        </div>
                       </li>
                     ))}
                   </ul>
-                 </div>
+                </div>
               </div>
               <div className="col-6 col-md-9 ">
                 <div className="row">
