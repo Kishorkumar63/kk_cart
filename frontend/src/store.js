@@ -7,7 +7,7 @@ import authReducer from "./slices/authSlice";
 const reducer = combineReducers({
   productsState: productsReducer,
   productState: productReducer,
-authState:authReducer,
+  authState: authReducer,
 });
 
 const store = configureStore({

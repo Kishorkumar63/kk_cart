@@ -8,8 +8,21 @@ import { ToastContainer } from "react-toastify";
 import ProductDetail from "./components/Product/ProductDeatils";
 import ProductSearch from "./components/Product/ProductSearch";
 import Login from "./components/user/Login";
+import Register from "./components/user/Register";
+import { useEffect } from "react";
+import store from "./store";
+import { loadUser } from "./actions/userAction";
+import { useDispatch } from "react-redux";
+import Page_Not_Fount from "./components/layouts/Page_Not_Fount";
+import Profile from "./components/user/Profile";
+import { ProtectedRoute } from "./components/route/ProtectedRoute";
+import { UpdateProfile } from "./components/user/UpdateProfile";
 
 function App() {
+ const dispatch= useDispatch()
+  useEffect(() => {
+    dispatch(loadUser);
+  });
   return (
     <Router>
       <div className="App">
@@ -24,7 +37,11 @@ function App() {
                 element={<ProductSearch />}
               ></Route>
               <Route path="/product/:id" element={<ProductDetail />}></Route>
-              <Route path="/login" element={<Login/>}></Route>
+              <Route path="/login" element={<Login />}></Route>
+              <Route path="/register" element={<Register />}></Route>
+              <Route path="/myprofile" element={<ProtectedRoute><Profile/> </ProtectedRoute> }></Route>
+              <Route path="/myprofile/update" element={<ProtectedRoute>   <UpdateProfile/>  </ProtectedRoute> }></Route>
+              <Route path="*" element={<Page_Not_Fount/>}></Route>
             </Routes>
           </div>
 

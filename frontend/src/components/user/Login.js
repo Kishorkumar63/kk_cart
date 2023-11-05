@@ -4,6 +4,7 @@ import { clearAuthError, login } from "../../actions/userAction";
 import { useDispatch, useSelector  } from "react-redux";
 import {toast} from "react-toastify"
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -70,9 +71,9 @@ navigate("/")
               LOGIN
             </button>
 
-            <a href="#" className="float-right mt-3">
+            <Link to="/register" className="float-right mt-3">
               New User?
-            </a>
+            </Link>
           </form>
         </div>
       </div>
