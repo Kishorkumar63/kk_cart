@@ -17,6 +17,10 @@ import Profile from "./components/user/Profile";
 import { ProtectedRoute } from "./components/route/ProtectedRoute";
 import { UpdateProfile } from "./components/user/UpdateProfile";
 
+import ChangePassword from "./components/user/ChangePassword";
+import { ForgotPassword } from "./components/user/ForgotPassword";
+import { ResetPassword } from "./components/user/ResetPassword";
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -42,7 +46,7 @@ function App() {
                 path="/myprofile"
                 element={
                   <ProtectedRoute>
-                    <Profile />{" "}
+                    <Profile />
                   </ProtectedRoute>
                 }
               ></Route>
@@ -50,12 +54,14 @@ function App() {
                 path="/myprofile/update"
                 element={
                   <ProtectedRoute>
-                    {" "}
-                    <UpdateProfile />{" "}
+                    <UpdateProfile />
                   </ProtectedRoute>
                 }
               ></Route>
-              <Route path="*" element={<Page_Not_Fount />}></Route>
+                <Route path="/myprofile/update/password" element={<ProtectedRoute><ChangePassword/></ProtectedRoute>   }></Route>
+                <Route path="/password/forgot" element={<ForgotPassword/>}></Route>
+                <Route path="/password/reset/:token" element={<ResetPassword/>}></Route>
+              <Route path="*" element={<Page_Not_Fount/>}></Route>
             </Routes>
           </div>
 
