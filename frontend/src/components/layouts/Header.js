@@ -2,12 +2,13 @@ import React from "react";
 import Search from "./Search";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { DropdownButton, Dropdown, Image } from "react-bootstrap";
+import {  Dropdown, Image } from "react-bootstrap";
 import { logout } from "../../actions/userAction";
 const Header = () => {
   const dispatch = useDispatch();
- const navigate= useNavigate()
+  const navigate = useNavigate();
   const { isAuthenticated, user } = useSelector((state) => state.authState);
+  const { items:cartItems } = useSelector((state) => state.cartState);
   const logoutHandler = () => {
     dispatch(logout);
   };
@@ -16,7 +17,7 @@ const Header = () => {
       <div className="col-12 col-md-3">
         <div className="navbar-brand">
           <Link to="/">
-            <img width="150px" src="/images/" alt="kk.png" />
+            <img width="170px" src="/images/logo2.png" alt="kk.png" />
           </Link>
         </div>
       </div>
@@ -41,8 +42,11 @@ const Header = () => {
               <span>{user.name}</span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
-            <Dropdown.Item onClick={()=>navigate("/myprofile")} className="text-dark">
-              Profile
+              <Dropdown.Item
+                onClick={() => navigate("/myprofile")}
+                className="text-dark"
+              >
+                Profile
               </Dropdown.Item>
               <Dropdown.Item onClick={logoutHandler} className="text-danger">
                 LogOut
@@ -55,11 +59,11 @@ const Header = () => {
           </Link>
         )}
 
-        <span id="cart" className="ml-3">
+        <Link to="/cart"id="cart" className="ml-3">
           Cart
-        </span>
+        </Link>
         <span className="ml-1" id="cart_count">
-          2
+          {cartItems.length}
         </span>
       </div>
     </nav>

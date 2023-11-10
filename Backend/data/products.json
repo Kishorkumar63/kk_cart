@@ -113,5 +113,21 @@
         "stock": 6,
         "numOfReviews": 9,
         "reviews": []
+    },
+    {
+        "name": "Smart Watch",
+        "price": 10.12,
+        "description": "The high raised back cover with extra padding.",
+        "ratings": 3,
+        "images": [
+            {
+                "image": "/images/products/8.jpg"
+            }
+        ],
+        "category": "Accessories",
+        "seller": "Ebay",
+        "stock": 6,
+        "numOfReviews": 9,
+        "reviews": []
     }
 ]

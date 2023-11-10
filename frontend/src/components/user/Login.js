@@ -3,23 +3,27 @@ import MetaData from "../layouts/MetaData";
 import { clearAuthError, login } from "../../actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location=useLocation();
+                                 // /shipping
+  const redirect=location.search?"/"+location.search.split("=")[1]:"/";
   const { loading, error, isAuthenticated } = useSelector(
     (state) => state.authState
-  );
+);
+
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
   };
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/");
+      navigate(redirect);
     }
     if (error) {
       toast(error, {
@@ -31,7 +35,7 @@ export default function Login() {
       });
       return;
     }
-  }, [error, isAuthenticated, dispatch]);
+  }, [error, isAuthenticated, dispatch, navigate]);
   return (
     <Fragment>
       <MetaData title={"Login"} />

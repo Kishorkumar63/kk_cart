@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearAuthError, updateProfile } from "../../actions/userAction";
 import { toast } from "react-toastify";
+import { clearUpdateProfile } from "../../slices/authSlice";
 
 export const UpdateProfile = () => {
-  const { user, error, isUpdated, loading } = useSelector(
-    (state) => state.authState
-  );
+  const { user, error, isUpdated } = useSelector((state) => state.authState);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState("");
@@ -48,7 +47,7 @@ export const UpdateProfile = () => {
         type: "success",
         position: toast.POSITION.BOTTOM_CENTER,
         onOpen: () => {
-          dispatch(clearAuthError);
+          dispatch(clearUpdateProfile);
         },
       });
       return;

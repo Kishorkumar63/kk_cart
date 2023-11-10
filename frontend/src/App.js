@@ -16,10 +16,11 @@ import Page_Not_Fount from "./components/layouts/Page_Not_Fount";
 import Profile from "./components/user/Profile";
 import { ProtectedRoute } from "./components/route/ProtectedRoute";
 import { UpdateProfile } from "./components/user/UpdateProfile";
-
 import ChangePassword from "./components/user/ChangePassword";
 import { ForgotPassword } from "./components/user/ForgotPassword";
 import { ResetPassword } from "./components/user/ResetPassword";
+import { Cart } from "./components/cart/Cart";
+import { Shipping } from "./components/cart/Shipping";
 
 function App() {
   const dispatch = useDispatch();
@@ -58,10 +59,25 @@ function App() {
                   </ProtectedRoute>
                 }
               ></Route>
-                <Route path="/myprofile/update/password" element={<ProtectedRoute><ChangePassword/></ProtectedRoute>   }></Route>
-                <Route path="/password/forgot" element={<ForgotPassword/>}></Route>
-                <Route path="/password/reset/:token" element={<ResetPassword/>}></Route>
-              <Route path="*" element={<Page_Not_Fount/>}></Route>
+              <Route
+                path="/myprofile/update/password"
+                element={
+                  <ProtectedRoute>
+                    <ChangePassword />
+                  </ProtectedRoute>
+                }
+              ></Route>
+              <Route
+                path="/password/forgot"
+                element={<ForgotPassword />}
+              ></Route>
+              <Route
+                path="/password/reset/:token"
+                element={<ResetPassword />}
+              ></Route>
+              <Route path="/cart" element={<Cart />}></Route>
+              <Route path="/shipping" element={<ProtectedRoute><Shipping/>  </ProtectedRoute>}></Route>
+              <Route path="*" element={<Page_Not_Fount />}></Route>
             </Routes>
           </div>
 
