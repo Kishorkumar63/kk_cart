@@ -86,7 +86,7 @@ export const Cart = () => {
                 <h4>Order Summary</h4>
                 <hr />
                 <p>
-                  Subtotal:{" "}
+                  Subtotal:
                   <span className="order-summary-values">
                     {items.reduce((acc, item) => acc + item.quantity, 0)}{" "}
                     (Units)

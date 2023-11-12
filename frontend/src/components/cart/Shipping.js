@@ -1,11 +1,29 @@
-import React, { Fragment, useState } from "react";
-import { useSelector } from "react-redux";
-import { countries } from "countries-list";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Fragment, useState } from "react";
+import {countries} from 'countries-list'
 import { saveShippingInfo } from "../../slices/cartSlice";
 import { useNavigate } from "react-router-dom";
-import CheckoutSteps  from "./CheckoutSteps";
-export  function Shipping() {
+import CheckoutSteps from "./CheckoutSteps";
+import { toast } from "react-toastify";
+
+
+export const validateShipping = (shippingInfo, navigate) => {
+   
+    if(
+        !shippingInfo.address||
+        !shippingInfo.city||
+        !shippingInfo.state|| 
+        !shippingInfo.country||
+        !shippingInfo.phoneNo||
+        !shippingInfo.postalCode
+        ) {
+            toast.error('Please fill the shipping information',{position: toast.POSITION.BOTTOM_CENTER})
+            navigate('/shipping')
+    }
+} 
+
+
+export default function Shipping() {
     const {shippingInfo={} } = useSelector(state => state.cartState)
 
     const [address, setAddress] = useState(shippingInfo.address);

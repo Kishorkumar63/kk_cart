@@ -35,7 +35,7 @@ export default function Login() {
       });
       return;
     }
-  }, [error, isAuthenticated, dispatch, navigate]);
+  }, [error, isAuthenticated, dispatch, navigate,redirect]);
   return (
     <Fragment>
       <MetaData title={"Login"} />
