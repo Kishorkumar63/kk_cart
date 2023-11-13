@@ -2,37 +2,66 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const productsSlice = createSlice({
-    name: "products",
+    name: 'products',
     initialState: {
-        loading: false,
-       
+        loading: false
     },
     reducers: {
-        productsRequest(state, action) {
+        productsRequest(state, action){
             return {
                 loading: true
             }
-
         },
-        productsSuccess(state, action) {
+        productsSuccess(state, action){
             return {
                 loading: false,
                 products: action.payload.products,
-                productsCount:action.payload.count,
-                resPerPage:action.payload.resPerPage
+                productsCount: action.payload.count,
+                resPerPage : action.payload.resPerPage
             }
         },
-        productsFail(state, action) {
+        productsFail(state, action){
             return {
                 loading: false,
-                error: action.payload,
+                error:  action.payload
             }
         },
-
+        adminProductsRequest(state, action){
+            return {
+                loading: true
+            }
+        },
+        adminProductsSuccess(state, action){
+            return {
+                loading: false,
+                products: action.payload.products,
+            }
+        },
+        adminProductsFail(state, action){
+            return {
+                loading: false,
+                error:  action.payload
+            }
+        },
+        clearError(state, action){
+            return {
+                ...state,
+                error:  null
+            }
+        }
     }
-
-})
+});
 
 const { actions, reducer } = productsSlice;
-export const { productsSuccess, productsFail, productsRequest } = actions;
+
+export const { 
+    productsRequest, 
+    productsSuccess, 
+    productsFail,
+    adminProductsFail,
+    adminProductsRequest,
+    adminProductsSuccess
+
+} = actions;
+
 export default reducer;

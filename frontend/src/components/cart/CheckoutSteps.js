@@ -4,6 +4,7 @@ export default function CheckoutSteps({ shipping, confirmOrder, payment }) {
   return (
     <div className="checkout-progress d-flex justify-content-center mt-5">
       {shipping ? (
+        
         <Link to="/shipping">
           <div className="triangle2-active"></div>
           <div className="step active-step">Shipping Info</div>

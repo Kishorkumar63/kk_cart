@@ -26,7 +26,10 @@ import { Payment } from "./components/cart/Payment";
 import axios from "axios";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { languages } from "countries-list";
+import OrderSuccess from "./components/cart/OrderSuccess";
+import { UserOrder } from "./components/order/UserOrder";
+import { OrderDetails } from "./components/order/OrderDetails";
+
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
   const dispatch = useDispatch();
@@ -34,7 +37,7 @@ function App() {
     dispatch(loadUser);
     async function getStripeApiKey() {
       const { data } = await axios.get("api/v1/stripeapi");
-      setStripeApiKey(data.stripeApiKey)
+      setStripeApiKey(data.stripeApiKey);
     }
     getStripeApiKey();
   }, []);
@@ -103,18 +106,28 @@ function App() {
                   </ProtectedRoute>
                 }
               ></Route>
-{stripeApiKey&&
+              {stripeApiKey && (
+                <Route
+                  path="/payment"
+                  element={
+                    <ProtectedRoute>
+                      <Elements stripe={loadStripe(stripeApiKey)}>
+                        <Payment />
+                      </Elements>
+                    </ProtectedRoute>
+                  }
+                />
+              )}
               <Route
-                path="/payment"
+                path="order/success"
                 element={
                   <ProtectedRoute>
-                    <Elements stripe={loadStripe(stripeApiKey)}>
-                      <Payment />
-                    </Elements>
+                    <OrderSuccess />
                   </ProtectedRoute>
                 }
-              />
-              }
+              ></Route>
+              <Route path="/order" element={<ProtectedRoute> <UserOrder/></ProtectedRoute> }></Route>
+              <Route path="/order/:id" element={<ProtectedRoute> <OrderDetails/></ProtectedRoute> }></Route>
               <Route path="*" element={<Page_Not_Fount />}></Route>
             </Routes>
           </div>

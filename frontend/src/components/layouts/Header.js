@@ -48,6 +48,12 @@ const Header = () => {
               >
                 Profile
               </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => navigate("/order")}
+                className="text-dark"
+              >
+              Order
+              </Dropdown.Item>
               <Dropdown.Item onClick={logoutHandler} className="text-danger">
                 LogOut
               </Dropdown.Item>

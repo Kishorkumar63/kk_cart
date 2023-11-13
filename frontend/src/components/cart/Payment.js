@@ -10,6 +10,7 @@ import {validateShipping} from '../cart/Shipping';
 import {createOrder} from '../../actions/orderActions'
 import { clearError as clearOrderError } from "../../slices/orderSlice";
 
+
 export function Payment() {
     const stripe = useStripe();
     const elements = useElements();
@@ -21,7 +22,7 @@ export function Payment() {
     const { error:orderError } = useSelector(state => state.orderState)
 
     const paymentData = {
-        amount : Math.round( orderInfo.totalPrice * 100),
+        amount : Math.round(orderInfo && orderInfo.totalPrice * 100),
         shipping :{
             name: user.name,
             address:{
@@ -95,7 +96,7 @@ export function Payment() {
                     }
                     dispatch(orderCompleted())
                     dispatch(createOrder(order))
-
+                   
                     navigate('/order/success')
                 }else{
                     toast('Please Try again!', {
