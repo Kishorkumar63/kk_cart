@@ -29,6 +29,9 @@ import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./components/cart/OrderSuccess";
 import { UserOrder } from "./components/order/UserOrder";
 import { OrderDetails } from "./components/order/OrderDetails";
+import { Dashboard } from "./components/admin/Dashboard";
+import ProductList from "./components/admin/ProductList";
+import NewProduct from "./components/admin/NewProduct";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -126,12 +129,54 @@ function App() {
                   </ProtectedRoute>
                 }
               ></Route>
-              <Route path="/order" element={<ProtectedRoute> <UserOrder/></ProtectedRoute> }></Route>
-              <Route path="/order/:id" element={<ProtectedRoute> <OrderDetails/></ProtectedRoute> }></Route>
-              <Route path="*" element={<Page_Not_Fount />}></Route>
+              <Route
+                path="/order"
+                element={
+                  <ProtectedRoute>
+                    {" "}
+                    <UserOrder />
+                  </ProtectedRoute>
+                }
+              ></Route>
+              <Route
+                path="/order/:id"
+                element={
+                  <ProtectedRoute>
+                    {" "}
+                    <OrderDetails />
+                  </ProtectedRoute>
+                }
+              ></Route>
             </Routes>
           </div>
 
+          {/* Admin */}
+          <Routes>
+            <Route
+              path="/admin/dashboard"
+              element={
+                <ProtectedRoute isAdmin={true}>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/products"
+              element={
+                <ProtectedRoute isAdmin={true}>
+                  <ProductList />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/products/create"
+              element={
+                <ProtectedRoute isAdmin={true}>
+                  <NewProduct />
+                </ProtectedRoute>
+              }
+            ></Route>
+          </Routes>
           <Footer />
         </HelmetProvider>
       </div>
