@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { clearAuthError, resetPassword } from "../../actions/userAction";
+import { clearAuthError, resetPassword } from "../../actions/userActions";
 
 export function ResetPassword() {
   const [password, setPassword] = useState("");

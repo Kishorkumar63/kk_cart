@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../../actions/userAction";
+import { register } from "../../actions/userActions";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { clearAuthError } from "../../actions/userAction";
+import { clearAuthError } from "../../actions/userActions";
 export default function Register() {
   const [userData, setUserData] = useState({
     name: "",
@@ -58,7 +58,7 @@ export default function Register() {
       });
       return;
     }
-  }, [error, isAuthenticated, dispatch,navigate]);
+  }, [error, isAuthenticated, dispatch, navigate]);
   return (
     <div className="row wrapper">
       <div className="col-10 col-lg-5">

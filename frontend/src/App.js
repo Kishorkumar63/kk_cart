@@ -10,9 +10,8 @@ import ProductSearch from "./components/Product/ProductSearch";
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
 import { useEffect, useState } from "react";
-import { loadUser } from "./actions/userAction";
+import { loadUser } from "./actions/userActions";
 import { useDispatch } from "react-redux";
-import Page_Not_Fount from "./components/layouts/Page_Not_Fount";
 import Profile from "./components/user/Profile";
 import { ProtectedRoute } from "./components/route/ProtectedRoute";
 import { UpdateProfile } from "./components/user/UpdateProfile";
@@ -32,6 +31,12 @@ import { OrderDetails } from "./components/order/OrderDetails";
 import { Dashboard } from "./components/admin/Dashboard";
 import ProductList from "./components/admin/ProductList";
 import NewProduct from "./components/admin/NewProduct";
+import UpdateProduct from "./components/admin/UpdateProduct";
+import UpdateOrder from "./components/admin/UpdateOrder";
+import UpdateUser from "./components/admin/UpdateUser";
+import ReviewList from "./components/admin/ReviewList";
+import UserList from "./components/admin/UserList";
+import OrderList from "./components/admin/OrderList";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -43,7 +48,7 @@ function App() {
       setStripeApiKey(data.stripeApiKey);
     }
     getStripeApiKey();
-  }, []);
+  }, [dispatch]);
   return (
     <Router>
       <div className="App">
@@ -133,7 +138,6 @@ function App() {
                 path="/order"
                 element={
                   <ProtectedRoute>
-                    {" "}
                     <UserOrder />
                   </ProtectedRoute>
                 }
@@ -142,7 +146,6 @@ function App() {
                 path="/order/:id"
                 element={
                   <ProtectedRoute>
-                    {" "}
                     <OrderDetails />
                   </ProtectedRoute>
                 }
@@ -159,7 +162,7 @@ function App() {
                   <Dashboard />
                 </ProtectedRoute>
               }
-            ></Route>
+            />
             <Route
               path="/admin/products"
               element={
@@ -167,7 +170,7 @@ function App() {
                   <ProductList />
                 </ProtectedRoute>
               }
-            ></Route>
+            />
             <Route
               path="/admin/products/create"
               element={
@@ -175,7 +178,55 @@ function App() {
                   <NewProduct />
                 </ProtectedRoute>
               }
-            ></Route>
+            />
+            <Route
+              path="/admin/product/:id"
+              element={
+                <ProtectedRoute isAdmin={true}>
+                  <UpdateProduct />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/orders"
+              element={
+                <ProtectedRoute isAdmin={true}>
+                  <OrderList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/order/:id"
+              element={
+                <ProtectedRoute isAdmin={true}>
+                  <UpdateOrder />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/users"
+              element={
+                <ProtectedRoute isAdmin={true}>
+                  <UserList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/user/:id"
+              element={
+                <ProtectedRoute isAdmin={true}>
+                  <UpdateUser />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/reviews"
+              element={
+                <ProtectedRoute isAdmin={true}>
+                  <ReviewList />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
           <Footer />
         </HelmetProvider>

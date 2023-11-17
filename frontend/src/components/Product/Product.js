@@ -18,7 +18,7 @@ export default function Product({ product, col }) {
             <div className="rating-outer">
               <div
                 className="rating-inner"
-                style={{ width: `${(product.rating / 5) * 100} %` }}
+                style={{width: `${product.ratings/ 5 * 100}%` }}
               ></div>
             </div>
             <span id="no_of_reviews">({product.numofReviews} Reviews)</span>

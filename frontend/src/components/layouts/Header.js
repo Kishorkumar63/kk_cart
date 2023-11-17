@@ -2,13 +2,13 @@ import React from "react";
 import Search from "./Search";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {  Dropdown, Image } from "react-bootstrap";
-import { logout } from "../../actions/userAction";
+import { Dropdown, Image } from "react-bootstrap";
+import { logout } from "../../actions/userActions";
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isAuthenticated, user } = useSelector((state) => state.authState);
-  const { items:cartItems } = useSelector((state) => state.cartState);
+  const { items: cartItems } = useSelector((state) => state.cartState);
   const logoutHandler = () => {
     dispatch(logout);
   };
@@ -42,13 +42,15 @@ const Header = () => {
               <span>{user.name}</span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              {user.role==="admin" &&  <Dropdown.Item
-                onClick={() => navigate("/admin/dashboard")}
-                className="text-dark"
-              >
-               Dashboard
-              </Dropdown.Item>}
-           
+              {user.role === "admin" && (
+                <Dropdown.Item
+                  onClick={() => navigate("/admin/dashboard")}
+                  className="text-dark"
+                >
+                  Dashboard
+                </Dropdown.Item>
+              )}
+
               <Dropdown.Item
                 onClick={() => navigate("/myprofile")}
                 className="text-dark"
@@ -59,7 +61,7 @@ const Header = () => {
                 onClick={() => navigate("/order")}
                 className="text-dark"
               >
-              Order
+                Order
               </Dropdown.Item>
               <Dropdown.Item onClick={logoutHandler} className="text-danger">
                 LogOut
@@ -72,7 +74,7 @@ const Header = () => {
           </Link>
         )}
 
-        <Link to="/cart"id="cart" className="ml-3">
+        <Link to="/cart" id="cart" className="ml-3">
           Cart
         </Link>
         <span className="ml-1" id="cart_count">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearAuthError, updateProfile } from "../../actions/userAction";
+import { clearAuthError, updateProfile } from "../../actions/userActions";
 import { toast } from "react-toastify";
 import { clearUpdateProfile } from "../../slices/authSlice";
 

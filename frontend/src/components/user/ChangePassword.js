@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { updatePassword, clearAuthError } from "../../actions/userAction";
+import { updatePassword, clearAuthError } from "../../actions/userActions";
 
 export default function UpdatePassword() {
   const [password, setPassword] = useState("");

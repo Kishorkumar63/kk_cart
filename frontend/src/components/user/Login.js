@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import MetaData from "../layouts/MetaData";
-import { clearAuthError, login } from "../../actions/userAction";
+import { clearAuthError, login } from "../../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -10,12 +10,12 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const location=useLocation();
-                                 // /shipping
-  const redirect=location.search?"/"+location.search.split("=")[1]:"/";
+  const location = useLocation();
+  // /shipping
+  const redirect = location.search ? "/" + location.search.split("=")[1] : "/";
   const { loading, error, isAuthenticated } = useSelector(
     (state) => state.authState
-);
+  );
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ export default function Login() {
       });
       return;
     }
-  }, [error, isAuthenticated, dispatch, navigate,redirect]);
+  }, [error, isAuthenticated, dispatch, navigate, redirect]);
   return (
     <Fragment>
       <MetaData title={"Login"} />

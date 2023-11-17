@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import  Sidebar  from './Sidebar'
 import {useDispatch, useSelector} from "react-redux"
 import { getAdminProducts } from '../../actions/productActions'
+import { Link } from 'react-router-dom'
 
 export const Dashboard = () => {
     const {products=[]}=useSelector(state=>state.productsState)
@@ -19,7 +20,7 @@ outOfStock=outOfStock+1;
    }
    useEffect(()=>{
 dispatch(getAdminProducts);
-   },[dispatch,getAdminProducts])
+   },[dispatch])
   return (
     <div className="row">
     <div className="col-12 col-md-2">
@@ -45,12 +46,12 @@ dispatch(getAdminProducts);
                             <div className="card-body">
                                 <div className="text-center card-font-size">Products<br /> <b>{products.length}</b></div>
                             </div>
-                            <a className="card-footer text-white clearfix small z-1" to="/admin/products">
+                            <Link className="card-footer text-white clearfix small z-1" to="/admin/products">
                                 <span className="float-left">View Details</span>
                                 <span className="float-right">
                                     <i className="fa fa-angle-right"></i>
                                 </span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
@@ -60,12 +61,12 @@ dispatch(getAdminProducts);
                             <div className="card-body">
                                 <div className="text-center card-font-size">Orders<br /> <b>345</b></div>
                             </div>
-                            <a className="card-footer text-white clearfix small z-1" to="/admin/orders">
+                            <Link className="card-footer text-white clearfix small z-1" to="/admin/orders">
                                 <span className="float-left">View Details</span>
                                 <span className="float-right">
                                     <i className="fa fa-angle-right"></i>
                                 </span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
 

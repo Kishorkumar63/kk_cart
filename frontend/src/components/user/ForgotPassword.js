@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { forgotPassword, clearAuthError } from "../../actions/userAction";
+import { forgotPassword, clearAuthError } from "../../actions/userActions";
 import { toast } from "react-toastify";
 
 export const ForgotPassword = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
-  const {  error, message } = useSelector(
-    (state) => state.authState
-  );
+  const { error, message } = useSelector((state) => state.authState);
   const handlerSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -27,15 +25,15 @@ export const ForgotPassword = () => {
       return;
     }
     if (error) {
-        toast("profile Updated Successfully", {
-          type: "error",
-          position: toast.POSITION.BOTTOM_CENTER,
-          onOpen: () => {
-            dispatch(clearAuthError);
-          },
-        });
-        return;
-      }
+      toast("profile Updated Successfully", {
+        type: "error",
+        position: toast.POSITION.BOTTOM_CENTER,
+        onOpen: () => {
+          dispatch(clearAuthError);
+        },
+      });
+      return;
+    }
   });
   return (
     <div class="row wrapper">
