@@ -13,7 +13,7 @@ const reducer = combineReducers({
   cartState: cartReducer,
   orderState:orderReducer,
   userState:userReducer,
-});
+}); 
 
 const store = configureStore({
   reducer,

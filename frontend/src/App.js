@@ -21,14 +21,14 @@ import { ResetPassword } from "./components/user/ResetPassword";
 import { Cart } from "./components/cart/Cart";
 import Shipping from "./components/cart/Shipping";
 import { Confirmorder } from "./components/cart/Confirmorder";
-import { Payment } from "./components/cart/Payment";
+import Payment from "./components/cart/Payment";
 import axios from "axios";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./components/cart/OrderSuccess";
 import { UserOrder } from "./components/order/UserOrder";
 import { OrderDetails } from "./components/order/OrderDetails";
-import { Dashboard } from "./components/admin/Dashboard";
+import Dashboard  from "./components/admin/Dashboard";
 import ProductList from "./components/admin/ProductList";
 import NewProduct from "./components/admin/NewProduct";
 import UpdateProduct from "./components/admin/UpdateProduct";
@@ -37,6 +37,7 @@ import UpdateUser from "./components/admin/UpdateUser";
 import ReviewList from "./components/admin/ReviewList";
 import UserList from "./components/admin/UserList";
 import OrderList from "./components/admin/OrderList";
+
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -120,7 +121,7 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <Elements stripe={loadStripe(stripeApiKey)}>
-                        <Payment />
+                        <Payment/>
                       </Elements>
                     </ProtectedRoute>
                   }

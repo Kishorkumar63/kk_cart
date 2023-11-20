@@ -81,7 +81,7 @@ export default function ProductDetail() {
     return () => {
       dispatch(clearProduct());
     };
-  }, [dispatch, id, isReviewSubmitted, error]);
+  }, [dispatch, id, isReviewSubmitted, error, product._id]);
 
   return (
     <Fragment>
@@ -145,7 +145,7 @@ export default function ProductDetail() {
               <button
                 type="button"
                 id="cart_btn"
-                disabled={product.stock == 0 ? true : false}
+                disabled={product.stock === 0 ? true : false}
                 onClick={() => {
                   dispatch(addCartItem(product._id, quantity));
                   toast("Cart Item Added!", {

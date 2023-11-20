@@ -10,8 +10,7 @@ import {validateShipping} from '../cart/Shipping';
 import {createOrder} from '../../actions/orderActions'
 import { clearError as clearOrderError } from "../../slices/orderSlice";
 
-
-export function Payment() {
+export default function Payment() {
     const stripe = useStripe();
     const elements = useElements();
     const dispatch = useDispatch()
@@ -60,7 +59,7 @@ export function Payment() {
             return
         }
 
-    },[])
+    },[dispatch,navigate,orderError,shippingInfo])
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -96,7 +95,7 @@ export function Payment() {
                     }
                     dispatch(orderCompleted())
                     dispatch(createOrder(order))
-                   
+
                     navigate('/order/success')
                 }else{
                     toast('Please Try again!', {
@@ -144,7 +143,7 @@ export function Payment() {
                         type="text"
                         id="card_cvc_field"
                         className="form-control"
-                       
+                        value=""
                     />
                     </div>
         
